@@ -2,7 +2,7 @@
 # Probabilistic forecasting
 This repository is a handbook to generate probabilistic forecasts. The handbook was created within the project "Increased utilisation of the grid with combined solar- and wind power parks" (no. 49421-1), financed by the Swedish Energy Agency. The repository contains utilities to generate operational probabilistic forecasts of power production using the numerical weather predictor (NWP) MetCoOp Ensemble Prediction System (MEPS) and statistical post-processing methodologies.
 
-## Prepare your python environment
+## Prepare your Python environment
 This example was developed using anaconda. You can use the file ```environment.yml``` create an environment with the same packages and version of Python. In anaconda prompt, run
 
 ```bash
