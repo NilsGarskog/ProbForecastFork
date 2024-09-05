@@ -3,7 +3,7 @@
 This repository is a handbook to generate probabilistic power production forecasts. The repository contains utilities to generate operational probabilistic forecasts of power production using the numerical weather predictor (NWP) MetCoOp Ensemble Prediction System (MEPS) and statistical post-processing methodologies.
 
 ## Prepare your Python environment
-This example was developed using Anaconda. You can use the file ```environment.yml``` create an environment with the same packages and version of Python. In anaconda prompt, run:
+This example was developed using Anaconda. You can use the file ```environment.yml``` create an environment with the same packages and version of Python. In the Anaconda prompt, run:
 
 ```bash
 conda env create -f environment.yml
