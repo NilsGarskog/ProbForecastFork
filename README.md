@@ -16,7 +16,7 @@ The example site provided here is a PV power park in Uppsala.
 
 ## Add power production data 
 Add a csv-file containing the electrical energy production from each of your site(s) provided in ```info_sites.xlsx```. The csv-file must contain one column of datetime index and at least one column with power production (if multiple columns are present, they will be aggregated). Put the file in the folder: ```~/data/energy_production/{site_name}/{site_name}.csv```
-The power production from the PV park is modeled using the solar irradiance data from the STRÅNG model (https://strang.smhi.se/).
+The power production from the PV park is modeled using solar irradiance data from the STRÅNG model (https://strang.smhi.se/).
 
 ## Train forecasting models
 The script ```train_fc.py``` is used to download NWP forecasts, train the forecasting models and perform backtesting.
