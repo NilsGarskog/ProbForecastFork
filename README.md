@@ -1,9 +1,9 @@
 
 # Probabilistic forecasting
-This repository is a handbook to generate probabilistic power production forecasts. The handbook was created within the project "Increased utilisation of the grid with combined solar- and wind power parks" (no. 49421-1), financed by the Swedish Energy Agency. The repository contains utilities to generate operational probabilistic forecasts of power production using the numerical weather predictor (NWP) MetCoOp Ensemble Prediction System (MEPS) and statistical post-processing methodologies.
+This repository is a handbook to generate probabilistic power production forecasts. The repository contains utilities to generate operational probabilistic forecasts of power production using the numerical weather predictor (NWP) MetCoOp Ensemble Prediction System (MEPS) and statistical post-processing methodologies.
 
 ## Prepare your Python environment
-This example was developed using anaconda. You can use the file ```environment.yml``` create an environment with the same packages and version of Python. In anaconda prompt, run
+This example was developed using anaconda. You can use the file ```environment.yml``` create an environment with the same packages and version of Python. In anaconda prompt, run:
 
 ```bash
 conda env create -f environment.yml
@@ -12,6 +12,9 @@ conda activate forecasting_env
 
 ## Update sites
 Update the file ```info_sites.xlsx``` with the sites that you want to forecast.
+
+## Add power production data 
+Add a csv-file containing the electrical energy production from each of your site(s) provided in ```info_sites.xlsx```. The csv-file must contain one column of datetime index and at least one column with power production (if multiple columns are present, they are aggregated). Put the file in the folder: ```~/data/energy_production/{site_name}/{site_name}.csv```
 
 ## Train forecasting models
 The script ```train_fc.py``` is used to train the forecasting models.
