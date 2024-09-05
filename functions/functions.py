@@ -66,7 +66,22 @@ def load_params():
         param_dict = pickle.load(file)
     return param_dict
 
+################################################################################
+# Function to compile production data on correct format
+################################################################################
 def compile_power_production(site_name):
+    '''
+    This function compiles nproduction values so that they are on the correct form.
+    
+    Parameters
+    ----------
+    site_name: Name of power production site.
+
+    Returns
+    -------
+    df: A DataFrame with datetime index and a single aggregated power production column.
+
+    '''
     
     df = pd.read_csv(os.path.join(PATH, 'data', 'energy_production', site_name, site_name + '.csv'), sep = '\t')
     df = df.dropna(axis=0)
