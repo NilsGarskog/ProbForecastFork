@@ -8,7 +8,7 @@ import numpy as np
 import sys
 
 # PATH = os.path.dirname(os.path.realpath(__file__)) # Windows
-PATH = '/Users/oskarlindberg/Documents/GitHub/49421---Probabilistic-forecasting' # macOS
+PATH = '/Users/nilsgarskog/Documents/Examensarbete_kodbas/ProbForecastFork' # macOS
 sys.path.insert(1, os.path.join(PATH, 'functions'))
 
 os.chdir(PATH)

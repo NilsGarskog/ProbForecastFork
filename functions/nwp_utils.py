@@ -146,6 +146,12 @@ class MetNoAPI:
                     prec = file.variables["precipitation_amount"][horizons,Iy,Ix] # unit: %
                     df_temp = pd.DataFrame(data=prec, columns=['precipitation_amount'])
                     df = df.join(df_temp)
+
+                # Air pressure at sea level
+                if 'air_pressure_at_sea_level' in self.features[i]:
+                    pressure = file.variables["air_pressure_at_sea_level"][horizons,Iy,Ix]
+                    df_temp = pd.DataFrame(data=pressure, columns=['air_pressure_at_sea_level'])
+                    df = df.join(df_temp)
                 
                 df.set_index(['ref_time', 'valid_time'], inplace = True)
                 metno_hires[self.site_names[i]] = df
