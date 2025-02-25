@@ -24,12 +24,12 @@ param_dict = {
              # NWP parameters
              'download-historical-nwp': True, # Boolean: If NWP should be downloaded or not
              'start_date': '2020-01-01', # Start date on the format '%Y-%m-%d'
-             'end_date': '2020-12-31', # End date on the format '%Y-%m-%d'
-             'ref-times': [0], # List of reference time(s) of interest
+             'end_date': '2023-12-31', # End date on the format '%Y-%m-%d'
+             'ref-times': [0,6,12,18], # List of reference time(s) of interest
              
              # Forecasting parameters
              'algorithm': 'QRF',
-             'train-vs-import': True, # Boolean: If the forecast models should be trained or not      
+             'train-vs-import': False, # Boolean: If the forecast models should be trained or not      
              'train-all-horizons': True, # Boolean: if all horizons should be trained in one go or separately
              'quantiles': np.linspace(5,95,19,dtype = int).tolist(), # Quantiles to forecast 
              'backtesting': True,
