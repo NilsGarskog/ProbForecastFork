@@ -24,7 +24,7 @@ param_dict = {
              # NWP parameters
              'download-historical-nwp': True, # Boolean: If NWP should be downloaded or not
              'start_date': '2020-01-01', # Start date on the format '%Y-%m-%d'
-             'end_date': '2023-12-31', # End date on the format '%Y-%m-%d'
+             'end_date': '2024-12-31', # End date on the format '%Y-%m-%d'
              'ref-times': [0,6,12,18], # List of reference time(s) of interest
              
              # Forecasting parameters
