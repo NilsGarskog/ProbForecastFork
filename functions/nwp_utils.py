@@ -200,30 +200,36 @@ class MetNoAPI:
         start_date: Start date as a string on the format "%Y-%m-%d".
         end_date: End date as a string on the format "%Y-%m-%d".
         ref_times: List of reference times to download, e.g., [0] or [0,6,12,18]
-
         '''
         
         strtdt = datetime.datetime.strptime(start_date, "%Y-%m-%d") 
         enddt = datetime.datetime.strptime(end_date, "%Y-%m-%d")
-        dates = pd.date_range(start=strtdt, end=enddt,freq='D')
+        dates = pd.date_range(start=strtdt, end=enddt, freq='D')
         
         for date in tqdm(dates):
             for ref_time in ref_times:
                 file_name = "met_forecast_1_0km_nordic_{:04d}{:02d}{:02d}T{:02d}Z.nc".format(date.year, date.month, date.day, ref_time)
                 url = f"{self.base_url}/metpparchive/{date.year:04d}/{date.month:02d}/{date.day:02d}/{file_name}"
-                metno_hires = self.query_MetNo_HIRESMEPS(url)
                 
                 for site_name in self.site_names:
                     foldername = os.path.join(PATH, 'data', 'nwp', 'MetNo_HIRESMEPS', site_name, '{:02d}'.format(ref_time) + "Z")
-                    filename = date.strftime("%Y%m%dT%H%M")+".txt"
-                
-                    os.makedirs(foldername, exist_ok=True) # If folder does not exist, create it
+                    filename = date.strftime("%Y%m%dT%H%M") + ".txt"
+                    filepath = os.path.join(foldername, filename)
                     
-                    if metno_hires != {}: # If missing from database, the dataframe will be empty
+                    # Check if the file already exists
+                    if os.path.exists(filepath):
+                        print(f"File already exists: {filepath}. Skipping API call...")
+                        continue  # Skip to the next file
+                    
+                    # If the file does not exist, fetch data from the API
+                    os.makedirs(foldername, exist_ok=True)  # Create the folder if it doesn't exist
+                    metno_hires = self.query_MetNo_HIRESMEPS(url)
+                    
+                    if metno_hires != {}:  # If data is not empty
                         df = metno_hires[site_name]
-                        df.to_csv(os.path.join(foldername,filename), sep="\t")
-
-        self.sort_historical_MetNo_HIRESMEPS(ref_times = ref_times)
+                        df.to_csv(filepath, sep="\t")
+        
+        self.sort_historical_MetNo_HIRESMEPS(ref_times=ref_times)
 
     def get_latest_MetNo_HIRESMEPS(self):
         '''
